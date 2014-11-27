@@ -1,0 +1,142 @@
+.body {
+	
+}
+.style{
+	width: 1200px;
+}
+
+.oddrow {
+	background-color: #d6efff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 12px;
+	text-decoration: none;
+}
+.evenrow {
+	background-color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 12px;
+	text-decoration: none;
+}
+.fontspec{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+}
+.captionRow{
+	background-color: #3b5998;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	text-align: left;
+	line-height: 14px;
+	text-decoration: none;
+}
+.tableStyle{
+	background-color:#d6efff;
+}
+.tableborder {
+	background-color: #d6efff;
+	border: 1px solid #6e8cd2;
+}
+.tableboxborder{
+	border-top:inset;
+	border-bottom:inset;
+	border-right:inset;
+	border-left:inset;
+	border-top-width:1px;
+	border-bottom-width:1px;
+	border-right-width:1px;
+	border-left-width:1px;
+	border-right-color:#aca899;
+	border-bottom-color:#aca899;
+}
+.reqTabledatath {
+	font-size: 11px;
+	color: #000;
+	background-color: #6e8cd2;
+	border-bottom: 1px solid #6e8cd2;
+	font-weight: bold;
+	line-height: 15px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.captionClass{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	text-align:left;
+	font-weight: bold;
+	line-height: 15px;
+}
+.ui-tabs .ui-tabs-hide {
+     display: none;
+}
+.ul.topnav {
+	list-style: none;
+	padding: 0 20px;
+	margin: 0;
+	float: left;
+	width: 920px;
+	background: #222;
+	font-size: 1.2em;
+	background: url(topnav_bg.gif) repeat-x;
+}
+.ul.topnav li {
+	float: left;
+	margin: 0;
+	padding: 0 15px 0 0;
+	position: relative; /*--Declare X and Y axis base for sub navigation--*/
+}
+.ul.topnav li a{
+	padding: 10px 5px;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+.ul.topnav li a:hover{
+	background: url(topnav_hover.gif) no-repeat center top;
+}
+.ul.topnav li span { /*--Drop down trigger styles--*/
+	width: 17px;
+	height: 35px;
+	float: left;
+	background: url(subnav_btn.gif) no-repeat center top;
+}
+.ul.topnav li span.subhover {background-position: center bottom; cursor: pointer;} /*--Hover effect for trigger--*/
+.ul.topnav li ul.subnav {
+	list-style: none;
+	position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+	left: 0; top: 35px;
+	background: #333;
+	margin: 0; padding: 0;
+	display: none;
+	float: left;
+	width: 170px;
+	border: 1px solid #111;
+}
+.ul.topnav li ul.subnav li{
+	margin: 0; padding: 0;
+	border-top: 1px solid #252525; /*--Create bevel effect--*/
+	border-bottom: 1px solid #444; /*--Create bevel effect--*/
+	clear: both;
+	width: 170px;
+}
+.html ul.topnav li ul.subnav li a {
+	float: left;
+	width: 145px;
+	background: #333 url(dropdown_linkbg.gif) no-repeat 10px center;
+	padding-left: 20px;
+}
+.html ul.topnav li ul.subnav li a:hover { /*--Hover effect for subnav links--*/
+	background: #222 url(dropdown_linkbg.gif) no-repeat 10px center;
+}

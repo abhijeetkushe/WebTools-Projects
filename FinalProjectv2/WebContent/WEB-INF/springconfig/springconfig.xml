@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<context:component-scan base-package="com.webtools.springfinal.controller"/>
+	<mvc:annotation-driven/>
+	
+	<!--<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="basename" value="views"/>
+	</bean>-->
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+	</bean>
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+	        <list>
+	            <value>/WEB-INF/tiles.xml</value>
+	        </list>
+	    </property>
+	</bean>
+	<bean id="messageSource"
+	    class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	    <property name="basename" value="WEB-INF/messages" />
+	    <property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	<bean id="localeChangeInterceptor"
+	    class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+	    <property name="paramName" value="lang" />
+	</bean>
+	<bean id="localeResolver"
+	    class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+	    <property name="defaultLocale" value="en"/>
+	</bean>
+	<bean id="handlerMapping"
+	    class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	    <property name="interceptors">
+	        <ref bean="localeChangeInterceptor" />
+	    </property>
+	</bean>
+	
+	<bean id="loginService" class="com.webtools.springfinal.services.impl.LoginServiceImpl">
+        <property name="loginDAO" ref="loginDAO"/>
+        <property name="appointmentDAO" ref="appointmentDAO"/>
+		
+    </bean>
+	
+	<bean id="loginDAO" class="com.webtools.springfinal.dao.impl.LoginDAOImpl">
+        <property name="sessionFactory" ref="hospitalSessionFactory"/>
+    </bean>
+    
+    <bean id="appointmentDAO" class="com.webtools.springfinal.dao.impl.AppointmentDAOImpl">
+        <property name="sessionFactory" ref="hospitalSessionFactory"/>
+    </bean>
+	
+	<bean id="hospitalSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="healthcareDataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>com/webtools/springfinal/dao/impl/Hospital.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<ref local="hibernateProperties"/>
+		</property>
+	</bean>
+	
+	<bean id="healthcareDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${hibernate.connection.driver_class}"/>
+		<property name="url" value="${hibernate.connection.url}"/>
+		<property name="username" value="${hibernate.connection.username}"/>
+		<property name="password" value="${hibernate.connection.password}"/>
+	</bean>
+	
+	<bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    	<property name="locations">
+      		<list>
+          		<value>classpath:com/webtools/springfinal/dao/hibernate.properties</value>
+      		</list>
+    	</property>
+  	</bean>
+	
+	<bean id="propertyConfigurer" 
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:com/webtools/springfinal/dao/hibernate.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- one of the properties available; the maximum file size in bytes -->
+    	<property name="maxUploadSize" value="1000000000"/>
+	</bean>
+	
+	 <bean id="webexpressionhandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler">
+    </bean>
+    
+     <bean id="webexpressionvoter" class="org.springframework.security.web.access.expression.WebExpressionVoter">
+    </bean>
+    
+    <!--<bean id="dateFormatter" 
+          class="org.springframework.format.datetime.DateFormatter">
+        <constructor-arg index="0" type="java.lang.String" value="dd-MMM-yyyy"></constructor-arg>
+    </bean>
+    
+    <bean id="dateFormatterFactory" 
+          class="org.springframework.format.datetime.joda.JodaDateTimeFormatAnnotationFormatterFactory">
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <property name="webBindingInitializer">
+       Configures Spring MVC DataBinder instances
+        <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+            <property name="formatterRegistry">
+                <bean class="org.springframework.ui.format.support.GenericFormatterRegistry">
+                    <property name="formatters">
+                        <list>
+	                        <ref local="dateFormatter"/>
+                        </list>	
+                    </property>
+                    <property name="annotationFormatterFactories">
+                        <list>
+	                        <ref local="dateFormatterFactory"/>
+                        </list>	
+                    </property>
+                </bean>
+            </property>
+        </bean>
+    </property>
+	</bean>-->
+</beans>

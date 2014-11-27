@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+	<tiles-definitions>
+	    <definition name="base.definition"
+	        template="/WEB-INF/jsps/layout.jsp">
+	        <put-attribute name="title" value="" />
+	        <put-attribute name="header" value="/WEB-INF/jsps/header.jsp" />
+			<put-attribute name="pageHeader" value="" />
+	        <!--<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp" />-->
+	        <put-attribute name="body" value="" />
+	        <put-attribute name="footer" value="/WEB-INF/jsps/footer.jsp" />
+	    </definition>
+	 
+	    <definition name="contact" extends="base.definition">
+	        <put-attribute name="title" value="Contact Manager" />
+	        <put-attribute name="body" value="/WEB-INF/jsps/contact.jsp" />
+	    </definition>
+		
+		<definition name="calevent1" extends="base.definition">
+	        <put-attribute name="title" value="Assignment4" />
+			<put-attribute name="pageHeader" value="Assignment 4"/>
+	        <put-attribute name="body" value="/WEB-INF/jsps/calevent1.jsp" />
+	    </definition>
+		
+		<definition name="loginUser" extends="base.definition">
+	        <put-attribute name="title" value="Login Page" />
+			<put-attribute name="pageHeader" value="Login"/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/loginUser2.jsp" />
+	    </definition>
+		
+		<definition name="loginConfirm" extends="base.definition">
+	        <put-attribute name="title" value="Login Page" />
+			<put-attribute name="pageHeader" value="Login Successful"/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/loginConfirm.jsp" />
+	    </definition>
+		
+		<definition name="createUser" extends="base.definition">
+	        <put-attribute name="title" value="Create User" />
+			<put-attribute name="pageHeader" value="Create User"/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/createUser.jsp" />
+	    </definition>
+		
+		<definition name="loginUser2" extends="base.definition">
+	        <put-attribute name="title" value="Login User" />
+			<put-attribute name="pageHeader" value="Login User"/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/loginUser2.jsp" />
+	    </definition>
+		
+		<definition name="createAppointment" extends="base.definition">
+	        <put-attribute name="title" value="Create Appointment" />
+			<put-attribute name="pageHeader" value="Create Appointment"/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/createAppointment.jsp" />
+	    </definition>
+		
+		<definition name="diagnoseAppointment" extends="base.definition">
+	        <put-attribute name="title" value="Diagnose Disease"/>
+			<put-attribute name="pageHeader" value="Diagnose Disease"/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/diagnoseAppointment.jsp" />
+	    </definition>
+		
+		<definition name="logoutUser" extends="base.definition">
+	        <put-attribute name="title" value="Logout User"/>
+			<put-attribute name="pageHeader" value=""/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/logoutuser.jsp" />
+	    </definition>
+
+		<definition name="editUser" extends="base.definition">
+	        <put-attribute name="title" value="Edit User"/>
+			<put-attribute name="pageHeader" value=""/>			
+	        <put-attribute name="body" value="/WEB-INF/jsps/editUser.jsp" />
+	    </definition>
+		
+		
+		 
+	</tiles-definitions>

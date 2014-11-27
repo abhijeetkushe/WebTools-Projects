@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<hibernate-mapping package="com.webtools.springfinal.bean">
+		<class name="PatientBean" table="PATIENT">	
+			<id name="patientid" type="long" column="PATIENT_ID">
+				<generator class="sequence">	
+					<param name="sequence">PATIENT_ID_SEQ</param>
+				</generator>		
+			</id>	
+			<property name="userName" type="string" column="ACCOUNT_NAME" />
+			<property name="password" type="string" column="ACCOUNT_PWD"/>
+			<set name="roles" table="ACCOUNT_ROLES" lazy="false" fetch="join">
+				<key column="account_id"/>
+				<element column="role" type="string" length="25"/> 	
+			</set>	
+		</class>
+		<!--<class name="UserInfoBean" table="USERINFO">	
+			<id name="userID" type="long" column="USER_ID">
+				<generator class="sequence">
+					<param name="sequence">USER_ID_SEQ</param>  
+				</generator>		
+			</id>	
+			<many-to-one name="userAccount" class="UserAccountBean" column="ACCOUNT_ID" unique="true" lazy="false" cascade="save-update,delete"/>
+			<property name="firstName" type="string" column="FIRST_NAME"/>
+        	<property name="lastName" type="string" column="LAST_NAME"/>
+        	<property name="middleName" type="string" column="MIDDLE_NAME"/>
+        	<property name="fullName" type="string" column="FULL_NAME"/>
+        	<property name="title" type="string" column="TITLE"/>
+        	<property name="gender" type="string" column="GENDER"/>
+        	<property name="addressLine1" type="string" column="ADDRESS_LINE1"/>
+        	<property name="addressLine2" type="string" column="ADDRESS_LINE2"/>
+        	<property name="city" type="string" column="CITY"/>
+        	<property name="state" type="string" column="STATE"/>
+        	<property name="zipCode" type="string" column="ZIP_CODE"/>
+        	<property name="homephone" type="string" column="HOME_PHONE"/>
+        	<property name="workphone" type="string" column="WORK_PHONE"/>
+        	<property name="cellphone" type="string" column="CELL_PHONE"/>
+        	<property name="email" type="string" column="EMAIL"/>
+			<joined-subclass name="PatientBean" table="PATIENT">
+	         		<key column="USER_ID"/>
+					<id name="patientid" type="long" column="PATIENT_ID">
+                        <generator class="sequence">
+                            <param name="sequence">
+                                PATIENT_ID_SEQ
+                            </param>
+                        </generator>
+                    </id>
+                    <property name="allergies" type="string" column="ALLERGIES"/>
+					<bag name="insuranceList" cascade="save-update,delete,delete-orphan" fetch="join" lazy="false">
+						<key column="patient_id"/>
+						<one-to-many class="InsuranceBean" />
+					</bag>
+					<bag name="appointmentList" cascade="save-update,delete,delete-orphan" fetch="join" lazy="false">
+						<key column="patient_id"/>
+						<one-to-many class="AppointmentBean" />
+					</bag>
+					<bag name="medicalHistoryList" cascade="save-update,delete,delete-orphan" fetch="join" lazy="false">
+						<key column="patient_id"/>
+						<one-to-many class="MedicalHistory" />
+					</bag>	
+			</joined-subclass>
+			<subclass name="PhysicianBean" discriminator-value="DOCTOR">
+				<join table="PHYSICIAN">
+            		<key column="USER_ID"/>
+                    <id name="physicianId" type="long" column="PHYSICIAN_ID">
+                        <generator class="sequence">
+                            <param name="sequence">
+                                PHYSICIAN_ID_SEQ
+                            </param>
+                        </generator>
+                    </id>
+            		<property name="degree" type="string" column="DEGREE"/>
+            		<property name="field" type="string" column="FIELD"/>
+            		<property name="physiciancategory" type="string" column="PHYSICIANCATEGORY"/>										
+					<bag name="appointmentList" cascade="save-update,delete,delete-orphan" fetch="join" lazy="false">
+						<key column="physician_id"/>
+						<one-to-many class="AppointmentBean" />
+					</bag>						
+	        	</join>
+			</subclass>			
+		</class>-->
+		
+			<query name="com.webtools.springfinal.bean.account.SearchByuserName">
+		<![CDATA[
+			from com.webtools.springfinal.bean.UserAccountBean as user where user.userName = :username
+		]]>
+	</query>	
+	</hibernate-mapping>
+	
+

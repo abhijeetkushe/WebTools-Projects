@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.webtools.springfinal.bean">
+    <class name="UserAccountBean" table="ACCOUNT">
+        <id name="accountID" type="long" column="ACCOUNT_ID">
+            <generator class="sequence">
+                <param name="sequence">
+                    ACCOUNT_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <property name="userName" type="string" column="ACCOUNT_NAME"/>
+        <property name="password" type="string" column="ACCOUNT_PWD"/>
+        <set name="roles" table="ACCOUNT_ROLES" lazy="false" fetch="join">
+            <key column="account_id"/>
+            <element column="role" type="string" length="25"/>
+        </set>
+    </class>
+    <class name="UserInfoBean" table="USERINFO">
+        <id name="userID" type="long" column="USER_ID">
+            <generator class="sequence">
+                <param name="sequence">
+                    USER_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <many-to-one name="userAccount" class="UserAccountBean" column="ACCOUNT_ID" unique="true" lazy="false" cascade="save-update,delete"/>
+        <property name="firstName" type="string" column="FIRST_NAME"/>
+        <property name="lastName" type="string" column="LAST_NAME"/>
+        <property name="middleName" type="string" column="MIDDLE_NAME"/>
+        <property name="fullName" type="string" column="FULL_NAME"/>
+        <property name="title" type="string" column="TITLE"/>
+        <property name="gender" type="string" column="GENDER"/>
+        <property name="addressLine1" type="string" column="ADDRESS_LINE1"/>
+        <property name="addressLine2" type="string" column="ADDRESS_LINE2"/>
+        <property name="city" type="string" column="CITY"/>
+        <property name="state" type="string" column="STATE"/>
+        <property name="zipCode" type="string" column="ZIP_CODE"/>
+        <property name="homephone" type="string" column="HOME_PHONE"/>
+        <property name="workphone" type="string" column="WORK_PHONE"/>
+        <property name="cellphone" type="string" column="CELL_PHONE"/>
+        <property name="email" type="string" column="EMAIL"/>
+		<property name="userType" type="string" column="USER_TYPE"/>
+		<property name="userImage" type="binary">
+			<column name="userImage" sql-type="blob"/>
+		</property>	
+        <joined-subclass name="PatientBean" table="PATIENT">
+            <key column="USER_ID"/>
+			<!--<id name="patientid" type="long" column="PATIENT_ID">
+            <generator class="sequence">
+            <param name="sequence">
+            PATIENT_ID_SEQ
+            </param>
+            </generator>
+            </id>-->
+			
+            <property name="allergies" type="string" column="ALLERGIES"/>
+            <list name="insuranceList"  cascade="save-update,delete,delete-orphan" fetch="join" lazy="false">
+                <key not-null="false" column="patient_id"/>
+				<list-index column="INSURANCE_SEQ_ID"/>
+                <one-to-many class="InsuranceBean"/>
+            </list>
+            <list name="appointmentList" cascade="save-update,delete,delete-orphan" fetch="join" lazy="false" >
+                <key not-null="false" column="patient_id"/>
+				<list-index column="APPOINTMENT_SEQ_ID"/>				
+                <one-to-many class="AppointmentBean" />
+            </list>
+            <list name="medicalHistoryList" cascade="save-update,delete,delete-orphan"  fetch="join" lazy="false">
+                <key not-null="false" column="patient_id"/>
+				<list-index column="MEDICAL_SEQ_ID"/>				
+                <one-to-many  class="MedicalHistory"/>
+            </list>
+        </joined-subclass>
+        <joined-subclass name="PhysicianBean" table="PHYSICIAN">
+            <key column="USER_ID"/>
+			 <property name="degree" type="string" column="DEGREE"/>
+            <property name="field" type="string" column="FIELD"/>
+            <property name="physicianCategory" type="string" column="PHYSICIANCATEGORY"/>
+            <list name="appointmentList" inverse="true" cascade="save-update,delete,delete-orphan"  fetch="join" lazy="false">
+                <key column="PHYSCIAN_ID"/>
+				<list-index column="APPOINTMENT_SEQ_ID"/>
+                <one-to-many class="AppointmentBean" />
+            </list>
+        </joined-subclass>
+    </class>
+    <class name="InsuranceBean" table="INSURANCE">
+        <id name="insuranceId" type="long" column="INSURANCE_ID">
+            <generator class="sequence">
+                <param name="sequence">
+                    INSURANCE_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <property name="insuranceName" type="string" column="INSURANCE_NAME"/>
+        <property name="policyName" type="string" column="POLICY_NAME"/>
+        <property name="startDate" type="date" column="START_DATE"/>
+        <property name="endDate" type="date" column="END_DATE"/>
+        <many-to-one name="patientBean" class="PatientBean" column="PATIENT_ID" fetch="join" unique="true" lazy="false" cascade="save-update"/>
+    </class>
+    <class name="AppointmentBean" table="APPOINTMENT">
+        <id name="appointmentId" type="long" column="APPOINTMENT_ID">
+            <generator class="sequence">
+                <param name="sequence">
+                    APPOINTMENT_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <property name="natureOfIllness" type="string" column="NATURE_OF_ILLNESS"/>
+        <property name="symptoms" type="string" column="SYMPTOMS"/>
+        <property name="illnessStartDate" type="date" column="START_DATE"/>
+        <property name="creationDate" type="date" column="CREATION_DATE"/>
+        <property name="appointmentType" type="string" column="APPOINTMENTTYPE"/>
+        <property name="physicianCategory" type="string" column="PHYSICIANCATEGORY"/>
+        <many-to-one name="patientbean" class="PatientBean" column="PATIENT_ID" fetch="join" unique="true" lazy="false" cascade="save-update" />
+        <many-to-one name="physician" class="PhysicianBean" column="PHYSCIAN_ID" fetch="join" unique="true"  lazy="false" cascade="save-update"/>
+		<list name="diagnosisList" cascade="save-update,delete,delete-orphan" fetch="join" lazy="false" >
+                <key not-null="false" column="APPOINTMENT_ID"/>
+				<list-index column="DIAGNOSIS_SEQ_ID"/>				
+                <one-to-many class="DiagnosisBean" />
+        </list>
+    </class>
+    <class name="MedicalHistory" table="PATIENT_MEDICAL_HISTORY">
+        <id name="medicalHistoryid" type="long" column="MEDICAL_HISTORY_ID">
+            <generator class="sequence">
+                <param name="sequence">
+                    MEDICAL_HISTORY_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <property name="startDate" type="date" column="START_DATE"/>
+        <property name="endDate" type="date" column="END_DATE"/>
+        <property name="illness" type="string" column="ILLNESS"/>
+		<many-to-one name="patientbean" class="PatientBean" column="PATIENT_ID" fetch="join" unique="true" lazy="false" cascade="save-update" /> 
+    </class>
+	<class name="MedicineBean" table="MED_DOSSIER">
+        <id name="medicineId" type="long" column="MED_DOSSIER_ID">
+            <generator class="sequence">
+                <param name="sequence">
+                    MEDICAL_DOSSIER_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <property name="medicineName" type="string" column="MEDICINE_NAME"/>
+        <property name="medicineIngredients" type="string" column="INGREDIENTS"/>
+        <property name="quantity" type="long" column="QUANTITY"/>
+        <property name="quantityPrescribed" type="long" column="quantity_Prescribed"/>		
+		<many-to-one name="diagnosis" class="DiagnosisBean" column="DIAGNOSIS_ID" fetch="join" unique="true" lazy="false" cascade="save-update" />	        	
+	</class>
+	<class name="DiagnosisBean" table="DIAGNOSIS">
+        <id name="diagnosisId" type="long" column="diagnosis_id">
+            <generator class="sequence">
+                <param name="sequence">
+                    DIAGNOSIS_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <property name="description" type="string" column="DESCRIPTION"/>
+        <many-to-one name="appointment" class="AppointmentBean" column="APPOINTMENT_ID" fetch="join" unique="true" lazy="false" cascade="save-update"/>
+		<property name="healthCheckRequired" type="boolean" column="HEALTH_CHECK_REQUIRED"/>
+		<property name="weight">
+			<column name="weight" sql-type="NUMERIC(5,2)"/> 
+		</property>	
+		<property name="pulse" type="int" column="pulse"/>
+		<property name="bloodPressure" type="int" column="bloodPressure"/>
+		<property name="temperature">
+			<column name="temperature" sql-type="NUMERIC(5,2)"/> 
+		</property>			
+        <list name="medicineList" table="MED_DOSSIER" fetch="join" lazy="false"  cascade="save-update,delete,delete-orphan" >	
+			<key column="DIAGNOSIS_ID"/>	
+			<list-index column="MEDICINE_SEQ_ID"/>
+			<one-to-many class="MedicineBean" />
+		</list>
+		<list name="documentBeanList" table="DIAGNOSIS_DOCUMENTS" fetch="join" lazy="false" cascade="save-update,delete" inverse="true">	
+			<key column="DIAGNOSIS_ID"/>	
+			<list-index column="DOCUMENT_IDX_SEQ"/>
+			<one-to-many class="DocumentBean" />
+		</list>	
+		<property name="dateDiagnosis" type="date" column="diagnos_date"/>		 
+    </class>
+	<class name="DocumentBean" table="DOCUMENT">
+		<id name="documentId" type="long" column="DOCUMENT_ID">
+            <generator class="sequence">
+                <param name="sequence">
+                    DOCUMENT_ID_SEQ
+                </param>
+            </generator>
+        </id>
+        <property name="documentdesc" type="string" column="DOCUMENT_DESC"/>
+		<property name="document" type="binary">
+			<column name="DOCUMENT" sql-type="blob"/>
+		</property>	
+		<many-to-one name="diagnosis" class="DiagnosisBean" column="DIAGNOSIS_ID" fetch="join" unique="true" lazy="false" cascade="save-update" />		
+		
+	</class>
+    <query name="com.webtools.springfinal.bean.account.SearchByuserName">
+        <![CDATA[
+					from com.webtools.springfinal.bean.UserAccountBean as user where user.userName = :username
+				]]>
+    </query>
+	<query name="com.webtools.springfinal.bean.diagnosis.SearchByappointment">
+        <![CDATA[
+					from com.webtools.springfinal.bean.DiagnosisBean as diag where diag.appointment = :appointment
+				]]>
+    </query>
+		<query name="com.webtools.springfinal.bean.appointment.SearchAllAppointment">
+        <![CDATA[
+					from com.webtools.springfinal.bean.AppointmentBean as app where app.physician is null
+				]]>
+    </query>
+	<query name="com.webtools.springfinal.bean.appointment.SearchAppointmentByPatient">
+        <![CDATA[
+					from com.webtools.springfinal.bean.AppointmentBean as app where app.patientbean =:patient
+				]]>
+    </query>
+	<query name="com.webtools.springfinal.bean.appointment.SearchAppointmentByPhysician">
+        <![CDATA[
+					from com.webtools.springfinal.bean.AppointmentBean as app where app.physician IN (:physician)
+				]]>
+    </query>
+	<query name="com.webtools.springfinal.bean.physician.SearchByuserName">
+        <![CDATA[
+					from com.webtools.springfinal.bean.UserInfoBean as user where user.userType='DOCTOR' AND (UPPER(user.firstName) = :username OR UPPER(user.lastName)=:username)
+				]]>
+    </query>
+
+</hibernate-mapping>
+
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>	
+	<br>
+	<span id="spanPatientType" style="display:;">
+               <img alt="" src="./Dental Appointments Registration - Create Account and Request Appointment_files/nav_divider.gif" vspace="8"><img alt="" vspace="8" src="./Dental Appointments Registration - Create Account and Request Appointment_files/nav_divider.gif"><br>
+                <h2 class="title">Type of Patient:  </h2><span id="rdoPatientType" class="text2" style="display:inline-block;color:#3366CC;font-weight:bold;width:300px;"><input id="rdoPatientType_0" type="radio" name="rdoPatientType" value="NEW" checked="checked"><label for="rdoPatientType_0">New Patient</label><input id="rdoPatientType_1" type="radio" name="rdoPatientType" value="EXISTING" onclick="javascript:setTimeout('__doPostBack(\'rdoPatientType$1\',\'\')', 0)"><label for="rdoPatientType_1">Existing Patient</label></span><br>
+             <img alt="" src="./Dental Appointments Registration - Create Account and Request Appointment_files/nav_divider.gif"><img alt="" src="./Dental Appointments Registration - Create Account and Request Appointment_files/nav_divider.gif">
+				<br><!--<img src="images/int_topper.gif" alt="" hspace="0" vspace="0" border="0" align="top" />-->
+              </span>
+			<fieldset id="fsAccInfo" style="padding-right: 10px; padding-left: 10px; float: left; padding-bottom: 10px;
+                width: 90%; padding-top: 10px" title="Enter Account Information">
+                <legend id="legendAccInfo" style="font-weight:bold">Enter Account Information</legend>
+                <table border="0" width="474" style="margin-top: 10px; margin-bottom: 10px;margin-left: 10px">
+            <tbody><tr>
+                <td align="left" valign="top" style="width: 25%">
+                    Title:</td>
+                <td align="left" colspan="3" valign="top" width="75%">
+                    <select name="cboTitle" id="cboTitle" class="selectionAlt" onchange="setSex();">
+	<option value="Mr.">Mr.</option>
+	<option value="Miss">Miss</option>
+	<option value="Dr.">Dr.</option>
+	<option value="Mrs.">Mrs.</option>
+	<option value="Ms.">Ms.</option>
+	<option value="Mstr">Mstr</option>
+	<option value="Rev.">Rev.</option>
+	<option value="Capt.">Capt.</option>
+	<option value="Maj.">Maj.</option>
+	<option value="Col">Col.</option>
+	<option value="Gen.">Gen.</option>
+
+</select></td>
+            </tr>
+                    <tr>
+                        <td align="left" style="width: 25%" valign="top">
+                            First Name: <font color="orangered">*</font>
+                        </td>
+                        <td align="left" colspan="3" valign="top" width="75%">
+                            <input name="txtFirstName" type="text" maxlength="15" size="18" id="txtFirstName" class="text" style="width:100px;"></td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="width: 25%" valign="top">
+                            Last Name: <font color="orangered">*</font>
+                        </td>
+                        <td align="left" colspan="3" valign="top" width="75%">
+                            <input name="txtLastName" type="text" maxlength="15" size="19" id="txtLastName" class="text" style="width:110px;"></td>
+                    </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%">
+                    Gender:</td><td align="left" colspan="3" valign="top" width="75%">
+                        <span id="rdoPatSex" class="text2" onclick="setTitle();"><input id="rdoPatSex_0" type="radio" name="rdoPatSex" value="M" checked="checked"><label for="rdoPatSex_0">Male</label><input id="rdoPatSex_1" type="radio" name="rdoPatSex" value="F"><label for="rdoPatSex_1">Female</label></span></td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%">
+                    Address 1: <font color="orangered">*</font>
+                </td>
+                <td align="left" colspan="3" style="font-weight: bold; color: #333333" valign="top" width="75%">
+                    <input name="txtAddress1" type="text" maxlength="50" size="54" id="txtAddress1" class="text" style="width:270px;"></td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%">
+                    Address 2:</td>
+                <td align="left" colspan="3" style="color: #333333" valign="top" width="75%">
+                    <input name="txtAddress2" type="text" maxlength="50" size="54" id="txtAddress2" class="text" style="width:270px;"></td>
+            </tr>
+                    <tr>
+                        <td align="left" style="width: 25%" valign="top">
+                         
+                        City State
+                         
+                        Zip: <font color="orangered">*</font>
+                        </td>
+                        
+                        <td align="left" colspan="3" style="color: #333333" valign="top" width="75%">
+                            <input name="txtCity" type="text" maxlength="50" id="txtCity" class="text"><select name="cboState" id="cboState" class="selectionAlt" style="width:50px;">
+	<option value="AK">AK</option>
+	<option value="AL">AL</option>
+	<option value="AR">AR</option>
+	<option value="AZ">AZ</option>
+	<option value="CA">CA</option>
+	<option value="CO">CO</option>
+	<option value="CT">CT</option>
+	<option value="DC">DC</option>
+	<option value="DE">DE</option>
+	<option value="FL">FL</option>
+	<option value="GA">GA</option>
+	<option value="HI">HI</option>
+	<option value="IA">IA</option>
+	<option value="ID">ID</option>
+	<option value="IL">IL</option>
+	<option value="IN">IN</option>
+	<option value="KS">KS</option>
+	<option value="KY">KY</option>
+	<option value="LA">LA</option>
+	<option value="MA">MA</option>
+	<option value="MD">MD</option>
+	<option value="ME">ME</option>
+	<option value="MI">MI</option>
+	<option value="MN">MN</option>
+	<option value="MO">MO</option>
+	<option value="MS">MS</option>
+	<option value="MT">MT</option>
+	<option value="NC">NC</option>
+	<option value="ND">ND</option>
+	<option value="NE">NE</option>
+	<option value="NH">NH</option>
+	<option value="NJ">NJ</option>
+	<option value="NM">NM</option>
+	<option value="NV">NV</option>
+	<option value="NY">NY</option>
+	<option value="OH">OH</option>
+	<option value="OK">OK</option>
+	<option value="OR">OR</option>
+	<option value="PA">PA</option>
+	<option value="RI">RI</option>
+	<option value="SC">SC</option>
+	<option value="SD">SD</option>
+	<option value="TN">TN</option>
+	<option value="TX">TX</option>
+	<option value="UT">UT</option>
+	<option value="VA">VA</option>
+	<option value="VT">VT</option>
+	<option value="WA">WA</option>
+	<option value="WI">WI</option>
+	<option value="WV">WV</option>
+	<option value="WY">WY</option>
+
+</select>
+                            <input name="txtZip" type="text" maxlength="10" size="20" id="txtZip" class="text" onchange="return validateZipCode(document.Form_Register_Step2_AccInfo.txtCity, document.Form_Register_Step2_AccInfo.cboState, this, false);" path="https://www.dentisoftonline.com/ValidateZip.asp" style="width:95px;"></td>
+                    </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%;">
+                    Home Phone: <font color="orangered">*</font>
+                </td>
+                <td align="left" valign="top" colspan="3">
+                    <input name="txtHomePhone" type="text" maxlength="10" id="txtHomePhone" class="text"></td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%">
+                    Work Phone:</td>
+                <td align="left" valign="top" colspan="3">
+                    <input name="txtWorkPhone" type="text" maxlength="10" id="txtWorkPhone" class="text"></td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%">
+                    Cell Phone:</td>
+                <td align="left" valign="top" colspan="3">
+                    <input name="txtCellPhone" type="text" maxlength="10" id="txtCellPhone" class="text"></td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%">
+                    Email: <font color="orangered">*</font></td>
+                <td align="left" valign="top" colspan="3">
+                    <input name="txtEmail" type="text" maxlength="50" id="txtEmail" class="text" onchange="return CheckEMail(document.Form_Register_Step2_AccInfo.txtEmail, true);"></td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" style="width: 25%">
+                    </td>
+                <td colspan="3" width="75%">
+                    </td>
+            </tr>
+            </tbody></table>
+            </fieldset>  
+</body>
+</html>

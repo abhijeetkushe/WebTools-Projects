@@ -1,0 +1,234 @@
+
+
+
+.OraWizBannerColor
+{
+     background-color: #FFFFFF;
+}
+.OraWizBannerLogo
+{
+     background-image:url(/images/logo.gif);
+}
+.OraWizBannerTitle
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 16pt;
+     color: #FFFFFF;
+     font-weight: bold ;
+}
+.OraWizBannerLink
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 8pt;
+     color: #663300;
+}
+.OraWizPageColor
+{
+     background-color: #FFFFFF;
+}
+.OraBgColorDark
+{
+     background-color: #336699;
+}
+.OraGlobalPageTitle
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 11pt;
+     color: #FFFFFF;
+     font-weight: bold ;
+}
+.OraBgColorDark1
+{
+     background-color: #336699;
+}
+.OraNav1Selected
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 11pt;
+     color: #99CCFF;
+     font-weight: bold ;
+}
+.OraBGAccentDark
+{
+     background-color: #CCCC99;
+}
+.OraNav1Enabled
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 11pt;
+     color: #003366;
+     text-decoration: none;
+}
+.OraHeaderSub
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 16pt;
+     color: #336699;
+}
+.OraHeaderSubSub
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 11pt;
+     color: #336699;
+     font-weight: bold ;
+}
+.OraInstructionText
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 10pt;
+     color: #000000;
+}
+.OraInlineInfo
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 8pt;
+     color: #336699;
+}
+.OraFieldText
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 10pt;
+     color: #000000;
+}
+.OraText
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 10pt;
+}
+.OraInlineInfo2
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 8pt;
+     color: #336699;
+     font-weight: bold ;
+}
+.OraCopyright
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 8pt;
+     color: #000000;
+}
+.OraPrivacy
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 8pt;
+     color: #663300;
+}
+.OraErrorHeader
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 11pt;
+     color: #CC0000;
+     font-weight: bold ;
+}
+.OraErrorText
+{
+     font-family: Arial, Helvetica, Geneva, sans-serif;
+     font-size: 10pt;
+     color: #000000;
+}
+.EditRegionBorder
+{
+      border : #CCCC99  1px solid ;
+}
+
+.OraTableContent,.x1h
+{
+      border-collapse:collapse
+}
+.OraTableColumnHeader,.x1r
+{
+      border-color:#f7f7e7;
+      font-family:Arial,Helvetica,Geneva,sans-serif;
+      font-size:10pt;
+      font-weight:bold;
+      text-align:left;
+      background-color:#cccc99;
+      color:#336699;
+      vertical-align:bottom
+}
+.OraTableCellText,.x1l
+{
+   font-family:Arial,Helvetica,Geneva,sans-serif;
+   font-size:10pt;
+   color:#000000;
+   vertical-align:baseline;
+   background-color:#f7f7e7;
+   border-color:#cccc99
+}
+.OraTableBorder0001,.x4j
+{
+   border-style:solid;
+   border-width:0px 0px 0px 1px
+}
+.OraTableBorder1111,.x4x
+{
+   border-style:solid;
+   border-width:1px
+}
+.OraLink:link,.xd:link,.OraBreadCrumbs,.xh,.OraBulletedList A,.xj A,.OraLinkText,.x2v,.OraHGridNavRowActiveLink,.x3u,.OraNavBarActiveLink,.x41
+{
+   font-family:Arial,Helvetica,Geneva,sans-serif;
+   font-size:10pt;
+   color:#663300
+}
+.OraLink:active,.xd:active,.OraALinkText,.x2x
+{
+   font-family:Arial,Helvetica,Geneva,sans-serif;
+   font-size:10pt;
+   color:#ff6600
+}
+.OraLink:visited,.xd:visited,.OraVLinkText,.x2w
+{
+   font-family:Arial,Helvetica,Geneva,sans-serif;
+   font-size:10pt;
+   color:#996633
+}
+.OraWelcomeText1
+{
+   font-family:Arial,Helvetica,Geneva,sans-serif;
+   font-size:18pt;
+   font-weight: bold;
+   color:#999966;
+   vertical-align:baseline;
+   background-color:#FFFFFF;
+   border-color:#FFFFFF
+}
+.OraWelcomeDiv1
+{
+   border-style: solid;
+   border-color: rgb(204, 204, 153);
+   
+   border-width: 0pt 0pt 1pt 1pt;
+   
+   margin: 0pt 0pt 10pt 50pt;
+   padding: 5pt;
+   width: 80%;
+}
+.OraWelcomeDiv2
+{
+   border-style: solid;
+   border-color: rgb(204, 204, 153);
+   
+   border-width: 0pt 0pt 1pt 1pt;
+   
+   margin: 0pt 0pt 10pt 50pt;
+   padding: 5pt;
+   width: 80%;
+}
+.OraWelcomeDiv3
+{
+   border-style: solid;
+   border-color: rgb(204, 204, 153);
+   margin: 0pt 0pt 10pt 50pt;
+   padding: 5pt;
+   width: 80%;
+}
+.OraButton
+{
+   font-family:Arial,Helvetica,Geneva,sans-serif;
+   font-size:10pt;
+   text-decoration:none
+   color:#000000;
+   width: 70px
+}
